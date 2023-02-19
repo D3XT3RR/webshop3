@@ -1,0 +1,147 @@
+html, body{
+    margin: 0;
+    padding:0;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    background-color: #ecf0f1;
+}
+
+table {
+    border-collapse:collapse;
+    border-bottom:0 solid gray;
+    font-family: Tahoma,Verdana,Segoe,sans-serif;
+    width:100%;
+}
+
+th {
+    border-bottom:0 solid gray;
+    background:none repeat scroll 0 0 #27ae60;
+    padding:10px;
+    color: #ecf0f1;
+}
+
+tr {
+    border-top:0 solid gray;
+    height: 25px;
+    text-align:center;
+}
+
+td{
+    align-items: center;
+    justify-content: center;
+}
+
+tr:nth-child(even) {background: #ecf0f1}
+tr:nth-child(odd) {background: #bdc3c7}
+
+#wrapper {
+    width: 100%;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+}
+#header {width: 70%; background: #27ae60; margin-top: 0; padding: 15px 0 15px 0;}
+#header h2 {width: 100%; margin:auto; color: #ecf0f1; padding: 0 15px 0 15px}
+#container {
+    width: 100%;
+    margin:0;
+    display: flex;
+    justify-content: center;
+
+
+}
+#container h3 {color: #000;}
+#container #content {
+    padding: 0;
+    margin: 0;
+    width: 70%;
+}
+
+menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#command{
+    padding: 0;
+    margin: 0;
+    width: 25%;
+    align-self: flex-end;
+}
+
+.logout-button {
+    height: 30px;
+    border: 0 solid #2ecc71;
+    border-radius: 0;
+    font-size: 12px;
+    font-weight: bold;
+    width: 100%;
+    background: #2ecc71;
+    transition: all 200ms;
+}
+
+.logout-button:hover{
+    background-color: #27ae60;
+    transition: all 200ms;
+    font-size: 13px;
+    color: #e74c3c;
+}
+
+.add-button {
+    height: 30px;
+    border: 0 solid #27ae60;
+    border-radius: 0;
+    font-size: 12px;
+    font-weight: bold;
+    width: 25%;
+    background: #2ecc71;
+    transition: all 200ms;
+}
+
+.add-button:hover{
+    background-color: #27ae60;
+    transition: all 200ms;
+    font-size: 13px;
+}
+
+.action-button{
+    text-align: center;
+    font-size: 15px;
+    color: black;
+    background-color: #2ecc71;
+    text-decoration: none;
+    padding: 3px;
+    border-radius: 4px;
+    transition: all 200ms;
+}
+
+.action-button:hover{
+    color: black;
+    background-color: #27ae60;
+    text-decoration: none;
+    transition: all 200ms;
+}
+
+.action-button:visited{
+    color: black;
+    text-decoration: none;
+}
+
+.action-button.delete-button:hover{
+    background-color: #c0392b;
+}
+
+.action-button.delete-button{
+    background-color: #e74c3c;
+}
+
+.action-button.update-button{
+    background-color: #2ecc71;
+}
+
+.action-button.update-button:hover{
+    background-color: #27ae60;
+}
