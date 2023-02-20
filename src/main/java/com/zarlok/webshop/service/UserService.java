@@ -9,7 +9,7 @@ public interface UserService {
     public List<User> getUsers();
     public void updateUser(User theUser);
     public void registerNewUser(User newUser);
-    public User getUser(int userId);
+    public User getUser(String username);
     public void deleteUser(String username);
 //    public String encodePassword(String password);
     public String encodePassword(String password);

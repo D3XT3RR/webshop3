@@ -35,8 +35,22 @@ public class UserManagementController {
         return "management/users/add-form";
     }
 
+    @GetMapping("/update")
+    public String registerUser(@RequestParam("username") String username, Model model){
+        User user = userService.getUser(username);
+        model.addAttribute("user", user);
+        return "management/users/edit-form";
+    }
+
+//    @PostMapping("/register")
+//    public String editUser(@ModelAttribute("user") User user){
+//        Role tempRole = user.getRole();
+//        tempRole.setUser(user);
+//        user.setRole();
+//    }
+
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("user") User user){
+    public String registerUser(@ModelAttribute("user") User user) {
         Role tempRole = user.getRole();
         tempRole.setUser(user);
         user.setRole(tempRole);
@@ -47,7 +61,11 @@ public class UserManagementController {
 
     @PostMapping("/update")
     public String updateUser(@ModelAttribute("user") User user){
+        Role tempRole = user.getRole();
+        tempRole.setUser(user);
+        user.setRole(tempRole);
         userService.updateUser(user);
+        roleService.saveRole(tempRole);
         return "redirect:/manage/user/list";
     }
 

@@ -32,7 +32,7 @@ public class User {
     @Column(name = "enabled")
     private boolean enabled;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Role role;
 
 //    @ManyToMany
