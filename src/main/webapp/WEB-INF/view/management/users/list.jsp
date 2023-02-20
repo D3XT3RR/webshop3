@@ -41,10 +41,10 @@
             <c:forEach var="tempUser" items="${userList}">
 
                 <c:url var="updateLink" value="/manage/user/update">
-                    <c:param name="userId" value="${tempUser.id}"/>
+                    <c:param name="username" value="${tempUser.username}"/>
                 </c:url>
                 <c:url var="deleteLink" value="/manage/user/delete">
-                    <c:param name="userId" value="${tempUser.id}"/>
+                    <c:param name="username" value="${tempUser.username}"/>
                 </c:url>
 
                 <tr>

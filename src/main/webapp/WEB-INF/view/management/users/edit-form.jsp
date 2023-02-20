@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: sitv1
-  Date: 08.02.2023
-  Time: 14:18
+  Date: 20.02.2023
+  Time: 14:29
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,7 +10,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>Register New User</title>
+    <title>Edit User</title>
 </head>
 <body>
 <div id="wrapper">
@@ -20,8 +20,8 @@
   </div>
 </div>
 <div id="container">
-  <div id="addUserForm">
-    <form:form action="register" modelAttribute="user" method="post">
+  <div id="editUserForm">
+    <form:form action="update" modelAttribute="user" method="post">
       <table>
         <tbody>
         <tr>
