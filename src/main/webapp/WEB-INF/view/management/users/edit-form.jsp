@@ -22,6 +22,7 @@
 <div id="container">
   <div id="editUserForm">
     <form:form action="update" modelAttribute="user" method="post">
+      <form:hidden path="id"/>
       <table>
         <tbody>
         <tr>
@@ -45,6 +46,7 @@
           <td class="radio-buttons">
             <div class="radio-button"><form:radiobutton path="enabled" value="1" label="yes" /></div>
             <div class="radio-button"><form:radiobutton path="enabled" value="0" label="no" /></div>
+            <form:hidden path="role.id"/>
           </td>
 
         </tr>
@@ -52,7 +54,7 @@
           <td><form:label path="role">Role:</form:label></td>
           <td class="radio-buttons">
             <div class="radio-button"><form:radiobutton path="role.authority" value="ROLE_ADMIN" label="admin" /></div>
-            <div class="radio-button"><form:radiobutton path="role.authority" value="ROLE_USER" label="user" checked="checked" /></div>
+            <div class="radio-button"><form:radiobutton path="role.authority" value="ROLE_USER" label="user"  /></div>
           </td>
         </tr>
         <tr>
