@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @Controller
 @RequestMapping("/manage/user")
@@ -17,6 +18,9 @@ public class UserManagementController {
 
     @Autowired
     private UserService userService;
+
+
+    private Logger logger = Logger.getLogger(getClass().getName());
 
     @Autowired
     private RoleService roleService;
@@ -36,9 +40,13 @@ public class UserManagementController {
     }
 
     @GetMapping("/update")
-    public String registerUser(@RequestParam("username") String username, Model model){
+    public String updateUser(@RequestParam("username") String username, Model model){
         User user = userService.getUser(username);
+        //Role role = roleService.getRole(username);
+        logger.info("\n === GetMapping updateUser === \n"+user.toString());
+        //logger.info("\n === GetMapping updateUser === \n"+role.toString());
         model.addAttribute("user", user);
+        //model.addAttribute("role", role);
         return "management/users/edit-form";
     }
 
@@ -61,11 +69,17 @@ public class UserManagementController {
 
     @PostMapping("/update")
     public String updateUser(@ModelAttribute("user") User user){
+        logger.info("\n === PostMapping updateUser ===\n" +user.toString());
+        //logger.info(role.toString());
+        //role.setAuthority(user.getRole().getAuthority());
+        //logger.info("Role.user.username: " + role.getUser().getUsername() + "; Role.authority:" + role.getAuthority());
+        //user.setRole(role);
         Role tempRole = user.getRole();
         tempRole.setUser(user);
         user.setRole(tempRole);
         userService.updateUser(user);
-        roleService.saveRole(tempRole);
+        //roleService.updateRole(tempRole);
+
         return "redirect:/manage/user/list";
     }
 

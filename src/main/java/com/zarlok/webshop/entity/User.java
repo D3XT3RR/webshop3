@@ -125,6 +125,21 @@ public class User {
 //    public void setRole(String role) {
 //        this.role = role;
 //    }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", address='" + address + '\'' +
+                ", enabled=" + enabled +
+                ", role=" + role +
+                '}';
+    }
 }
 
 

@@ -13,7 +13,7 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    int id;
+    private int id;
 
 //    @Column(name = "username")
 //    private String username;
@@ -30,6 +30,20 @@ public class Role {
     public Role(User user, String authority) {
         this.user = user;
         this.authority = authority;
+    }
+
+    public Role(int id, User user, String authority) {
+        this.id = id;
+        this.user = user;
+        this.authority = authority;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getAuthority() {
@@ -52,6 +66,7 @@ public class Role {
 
     @Override
     public String toString() {
-        return String.format("Role\nUsername = %s\nAuthority = %s", this.user, this.authority);
+        String username = this.user != null ? this.user.getUsername() : "null";
+        return String.format("Role\nId = %s\nUsername = %s\nAuthority = %s",this.id, username, this.authority);
     }
 }
