@@ -62,8 +62,8 @@ public class UserManagementController {
         Role tempRole = user.getRole();
         tempRole.setUser(user);
         user.setRole(tempRole);
+        logger.info("\n === registerUser PostMappint ===\n" + user.toString());
         userService.registerNewUser(user);
-        roleService.saveRole(tempRole);
         return "redirect:/manage/user/list";
     }
 
@@ -84,7 +84,7 @@ public class UserManagementController {
     }
 
     @GetMapping("/delete")
-    public String deleteUser(@RequestParam("userId") String username){
+    public String deleteUser(@RequestParam("username") String username){
         userService.deleteUser(username);
 
         return "redirect:/manage/user/list";
