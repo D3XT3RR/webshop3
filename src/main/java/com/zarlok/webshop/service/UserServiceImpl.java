@@ -36,7 +36,6 @@ public class UserServiceImpl implements UserService{
     @Override
     @Transactional
     public void registerNewUser(User newUser) {
-        // TODO: sprawdzic problem z rejestracją przy użyciu custom encodera
         newUser.setPassword(encodePassword(newUser.getPassword()));
         userDAO.registerNewUser(newUser);
     }
