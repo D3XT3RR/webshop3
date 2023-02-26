@@ -36,7 +36,6 @@
                     <th>Name</th>
                     <th>Price</th>
                     <th>Available</th>
-                    <th>Edit</th>
                 </tr>
                 <c:forEach var="tempProduct" items="${productList}">
 
@@ -53,15 +52,6 @@
                         <td>
                             ${tempProduct.available ?
                             '<i class="fi fi-ss-check"></i>' : '<i class="fi fi-ss-cross"></i>'}
-                        </td>
-                        <td>
-                            <a href="${updateLink}" class="action-button update-button">
-                                <i class="fi fi-ss-pencil"></i>
-                            </a>
-                            <a href="${deleteLink}" class="action-button delete-button">
-                                <i class="fi fi-ss-trash"></i>
-                            </a>
-                        </td>
                     </tr>
                 </c:forEach>
             </table>

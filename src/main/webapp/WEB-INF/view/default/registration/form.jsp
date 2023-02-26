@@ -20,7 +20,7 @@
             <h1>Sign up</h1>
             <form:form action="register" modelAttribute="user" method="post">
                 <c:if test="${param.error != null}">
-                    <div class="form-error">Username already in use!</div>
+                    <div class="form-error">Username is already in use!</div>
                 </c:if>
                 <div class="form-group">
                     <div class="form-row">
