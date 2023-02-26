@@ -2,6 +2,7 @@ package com.zarlok.webshop.controller;
 
 import com.zarlok.webshop.entity.Role;
 import com.zarlok.webshop.entity.User;
+import com.zarlok.webshop.exception.UserExistsException;
 import com.zarlok.webshop.service.RoleService;
 import com.zarlok.webshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +64,11 @@ public class UserManagementController {
         tempRole.setUser(user);
         user.setRole(tempRole);
         logger.info("\n === registerUser PostMappint ===\n" + user.toString());
-        userService.registerNewUser(user);
+        try {
+            userService.registerNewUser(user);
+        } catch (UserExistsException e) {
+            return "redirect:/register?error";
+        }
         return "redirect:/manage/user/list";
     }
 

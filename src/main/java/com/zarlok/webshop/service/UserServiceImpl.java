@@ -2,6 +2,7 @@ package com.zarlok.webshop.service;
 
 import com.zarlok.webshop.dao.UserDAO;
 import com.zarlok.webshop.entity.User;
+import com.zarlok.webshop.exception.UserExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,7 +36,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     @Transactional
-    public void registerNewUser(User newUser) {
+    public void registerNewUser(User newUser) throws UserExistsException {
         newUser.setPassword(encodePassword(newUser.getPassword()));
         userDAO.registerNewUser(newUser);
     }

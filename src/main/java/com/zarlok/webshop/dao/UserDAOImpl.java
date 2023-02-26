@@ -2,6 +2,7 @@ package com.zarlok.webshop.dao;
 
 import com.zarlok.webshop.entity.Role;
 import com.zarlok.webshop.entity.User;
+import com.zarlok.webshop.exception.UserExistsException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import org.hibernate.query.Query;
 import java.util.List;
-import java.util.Queue;
 
 @Repository
 public class UserDAOImpl implements UserDAO{
@@ -33,9 +33,17 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    public void registerNewUser(User newUser) {
+    public void registerNewUser(User newUser) throws UserExistsException {
         Session currentSession = sessionFactory.getCurrentSession();
-        currentSession.save(newUser);
+
+        Query<Integer> userQuery =
+                currentSession.createQuery("SELECT id from User where username='" + newUser.getUsername()+"'", Integer.class);
+        System.out.printf(userQuery.getQueryString());
+        if(userQuery.getSingleResult() != null){
+            throw new UserExistsException("This username is already in use!");
+        }else {
+            currentSession.save(newUser);
+        }
     }
 
     @Override
@@ -59,4 +67,5 @@ public class UserDAOImpl implements UserDAO{
     public void setRole(Role role) {
 
     }
+
 }
