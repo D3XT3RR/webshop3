@@ -41,7 +41,8 @@ public class SecurityConfig {
                         configurer
                                 .antMatchers("/manage/user/**").hasRole("ADMIN")
                                 .antMatchers("/manage/product/**").hasRole("ADMIN")
-                                .antMatchers("/manage/**").hasRole("ADMIN"))
+                                .antMatchers("/manage/**").hasRole("ADMIN")
+                                .antMatchers("/product/addReview").hasAnyRole("ADMIN", "USER"))
                 .formLogin(httpSecurityFormLoginConfigurer ->
                         httpSecurityFormLoginConfigurer
                                 .permitAll(true))

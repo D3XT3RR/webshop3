@@ -1,6 +1,10 @@
 package com.zarlok.webshop.entity;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -18,13 +22,22 @@ public class Product {
     @Column(name = "quantity")
     private int quantity;
 
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy = "product")
+//    @JoinTable(
+//            name = "product_reviews",
+//            joinColumns = @JoinColumn(name = "productId"),
+//            inverseJoinColumns = @JoinColumn(name = "reviewId")
+//    )
+    private List<Review> reviewsList;
+
     public Product(){}
 
-    public Product(String name, double price, boolean available, int quantity) {
+    public Product(String name, double price, boolean available, int quantity, List<Review> reviewsList) {
         this.name = name;
         this.price = price;
         this.available = available;
         this.quantity = quantity;
+        this.reviewsList = reviewsList;
     }
 
     public int getId() {
@@ -67,13 +80,43 @@ public class Product {
         this.quantity = quantity;
     }
 
+    public List<Review> getReviewsList() {
+        return reviewsList;
+    }
+
+    public void setReviewsList(List<Review> reviewsList) {
+        this.reviewsList = reviewsList;
+    }
+
+    public void saveReviewToList(Review review){
+        if(this.reviewsList != null){
+            this.reviewsList.add(review);
+        }else{
+            this.reviewsList = new ArrayList<>();
+            this.reviewsList.add(review);
+        }
+
+    }
+
+    public double getAvgReviewRate(){
+        double avg = 0;
+        int count = 0;
+        for(Review r : reviewsList){
+            count++;
+            avg += r.getRate();
+        }
+        return count != 0 ? avg/count : 0;
+    }
+
     @Override
-    public String toString(){
+    public String toString() {
         return "Product{" +
-                "id = " + id +
-                "name = '" + name + '\'' +
-                ", price = " + price +
-                ", available = " + available +
-                ", quantity = "+ quantity +'}';
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", available=" + available +
+                ", quantity=" + quantity +
+                ", reviewsList=" + reviewsList.toString() +
+                '}';
     }
 }
