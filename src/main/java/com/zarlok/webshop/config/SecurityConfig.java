@@ -30,6 +30,7 @@ public class SecurityConfig {
     public UserDetailsManager userDetailsManager(){return new JdbcUserDetailsManager(securityDataSource);}
 
 
+    @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }

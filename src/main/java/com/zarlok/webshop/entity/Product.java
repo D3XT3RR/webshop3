@@ -28,6 +28,7 @@ public class Product {
 //            joinColumns = @JoinColumn(name = "productId"),
 //            inverseJoinColumns = @JoinColumn(name = "reviewId")
 //    )
+//    @JoinColumn(name ="product_id", referencedColumnName = "id")
     private List<Review> reviewsList;
 
     public Product(){}

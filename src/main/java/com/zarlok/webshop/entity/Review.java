@@ -20,10 +20,8 @@ public class Review {
     @Column(name = "text")
     private String text;
 
-    @ManyToOne
-    @JoinTable(name = "product_reviews",
-            joinColumns = @JoinColumn(name = "reviewId"),
-            inverseJoinColumns = @JoinColumn(name = "productId"))
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name ="productId")
     private Product product;
 
     public Review() {
